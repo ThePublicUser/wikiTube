@@ -2,7 +2,6 @@ import os
 
 from datetime import datetime, timezone
 
-import os
 from manage_media import download_and_convert
 from manage_media import get_media
 from manage_media import grab_thumbnail
@@ -11,7 +10,7 @@ from youtube import upload_video_to_yt
 from youtube import set_thumbnail
 
 if __name__ == "__main__":
-    media = get_media('20260120')
+    media = get_media()
     print(media)
     if not media:
         raise RuntimeError("Failed to get the video of the day")
