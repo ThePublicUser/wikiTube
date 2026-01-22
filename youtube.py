@@ -72,11 +72,13 @@ def get_authenticated_service():
     # Build YouTube service
     return build("youtube", "v3", credentials=creds)
 
-def upload_video_to_yt(file_path, title, description="", tags=None, category_id="27", privacy_status="private",made_for_kids=False):
+def upload_video_to_yt(file_path, title, description="", tags=None, category_id="27", privacy_status="public",made_for_kids=False):
     """
     Uploads a video to the YouTube channel associated with the OAuth credentials.
     """
     youtube = get_authenticated_service()
+    tags = ['tranding' , 'vedio of the day' ,'wiki media of the day', title, "Documentary Footage","Wikimedia Commons","Wikimedia Video","Educational Video","Historical Video"]
+
 
     body = {
         "snippet": {
