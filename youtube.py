@@ -19,8 +19,10 @@ BASE64_FILE_PATH = "token_base64.txt"
 
 
 # If modifying scopes, delete token.pickle
-SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
-
+SCOPES = [
+    "https://www.googleapis.com/auth/youtube.upload",
+    "https://www.googleapis.com/auth/youtube.force-ssl"
+]
 def get_authenticated_service():
     creds = None
     
