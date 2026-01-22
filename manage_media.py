@@ -182,6 +182,8 @@ def video_of_the_day(date_str):
     actual_title = metadata.get("ObjectName", {}).get("value") or metadata.get("Title", {}).get("value") or filename
     author_html = metadata.get("Artist", {}).get("value", "Unknown")
     author = clean_author(author_html)
+    date_obj = datetime.strptime(date_str, "%Y%m%d")
+    formatted_date = date_obj.strftime("%d %b %Y")
     yt_description = f"""
         📽 Video Title: {actual_title}
         🖋 Author / Creator: {author}
@@ -189,6 +191,7 @@ def video_of_the_day(date_str):
         🔗 License Details: {license_url}
         🌐 Source / Original File: https://commons.wikimedia.org/wiki/File:{filename}
         🎥Source / Original Video : {info["url"]}
+        📅This Video was listed as Commons:Media of the day by Wikimedia Commons on {formatted_date}
 
         📝 Description:
         {description}
