@@ -69,8 +69,8 @@ def grab_thumbnail(video, out="background.png", ts="00:00:05"):
 
 #Add background image to the thumnail template
 def create_thumbnail(template_path, output_path, background_path, date_text, 
-                     color_to_replace=(12, 192, 223), blur_radius=3, font_path="OpenSans-Regular.ttf",
-                     font_size=20, letter_spacing=9, text_y_offset=240):
+                     color_to_replace=(12, 192, 223), blur_radius=3, font_path="CarterOne.ttf",
+                     font_size=54, letter_spacing=9, text_y_offset=150):
     """
     Replace a specific color in template with background and add date text
     with custom letter spacing.
@@ -99,7 +99,7 @@ def create_thumbnail(template_path, output_path, background_path, date_text,
 
     # Calculate starting x to center text with spacing
     total_width = sum((font.getbbox(c)[2] - font.getbbox(c)[0] + letter_spacing) for c in date_text) - letter_spacing
-    x = (width - total_width) // 2 - 25
+    x = (width - total_width) // 2 - 35
     y = height - text_y_offset
 
     draw_text_with_spacing(draw, date_text, (x, y), font, fill=(0,0,0,255), spacing=letter_spacing)
