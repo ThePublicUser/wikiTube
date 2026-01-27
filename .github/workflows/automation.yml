@@ -1,11 +1,9 @@
 name: Python YouTube Automation
 
-# Schedule: 3 times a day Nepal Time (UTC+5:45)
 on:
   schedule:
-     - cron: "20 15 * * *"
+     - cron: "0 15 * * *"
   workflow_dispatch:  # allow manual runs
-
 jobs:
   run-script:
     runs-on: ubuntu-latest
