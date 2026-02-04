@@ -2,7 +2,7 @@ name: Python YouTube Automation
 
 on:
   schedule:
-     - cron: "0 15 * * *"
+     - cron: "0 1 * * *"
   workflow_dispatch:  # allow manual runs
 jobs:
   run-script:
@@ -10,6 +10,8 @@ jobs:
 
     env:  
       CLIENT_SECRET_PICKLE_BASE64: ${{ secrets.CLIENT_SECRET_PICKLE_BASE64 }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
       CLIENT_SECRET_JSON: ${{ secrets.CLIENT_SECRET_JSON }}
 
     steps:
@@ -53,7 +55,11 @@ jobs:
         run: |
           echo "$CLIENT_SECRET_PICKLE_BASE64" | base64 --decode > client_secret.pickle
 
-      
+      # ------------------------
+      # Pre-download Whisper base model
+      - name: Pre-download Whisper base model
+        run: |
+          python -c "import whisper; whisper.load_model('base')"
 
       # ------------------------
       # Run your main script
