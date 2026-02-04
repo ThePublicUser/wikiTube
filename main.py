@@ -9,11 +9,14 @@ from make_videos import final_videos
 from yt_schedule import upload_video_to_yt , get_authenticated_service
 import time
 from datetime import datetime, timedelta, timezone
+import shutil
+
 
 
 AUDIO_DIR = "audio"
 VIDEOS_DIR = "final_videos"
 SUBTITLE_DIR = "subtitles"
+BG_VIDEOS='videos'
 
 async def main():
     os.makedirs(AUDIO_DIR, exist_ok=True)
@@ -118,10 +121,13 @@ async def main():
 
 if __name__ == "__main__":
     start_time = time.time()
-    print(start_time)
     asyncio.run(main())
-    end_time = time.time()
-    total_time = end_time - start_time
-    print(f"⏱️ Total elapsed time: {total_time:.2f} seconds")
-    print(total_time/60)
+    folders = [AUDIO_DIR, VIDEOS_DIR, SUBTITLE_DIR, BG_VIDEOS]
+    for folder in folders:
+        if os.path.exists(folder):
+            shutil.rmtree(folder)
+            print(f"Deleted {folder}")
+        else:
+            print(f"{folder} does not exist, skipping")
+    
 
